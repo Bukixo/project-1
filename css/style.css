@@ -24,3 +24,19 @@ li {
 
 
 }
+
+.timer {
+  height: 70px;
+  width: 70px;
+  border: 5px solid dodgerblue;
+  position: relative;
+  border-radius: 50%;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 70px;
+  color: dodgerblue;
+  margin: 0 auto 30px;
+  top:300px;
+  background-color: white;
+}
