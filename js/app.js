@@ -1,24 +1,52 @@
 $(() => {
 
 
-  // const $blue = $('.blue');
-  // const $red = $('.red');
-  // const $green = $('.green');
-  // const $yellow = $('.yellow');
-
   const $buttons = $('li');
   let playerArray = [];
   const options = ['blue', 'green', 'red', 'yellow'];
   let cpuArray = [];
-  const squares = 4;
   const $start = $('.start');
   const $scoresDiv = $('.scores');
   let score = 0;
   const $timer = $('.timer');
-  let time = 5;
+  let time = 60;
   const $reset =$('.reset');
   let timerId = null;
+  const levelChoice = [];
+  const $levelButton = $('.level-button');
+  let squares = 0;
+  const $gamePage = $('.game-page');
 
+//////moving from starter page to game page /////
+  function moveToSelect(){
+    $('html, body').animate({
+      scrollTop: $gamePage.offset().top
+    }, 1);
+  }
+
+////////LEVEL SELECTION//////
+  function levelSelection() {
+    if(levelChoice.join() === 'Level_one') {
+      squares = 4;
+      console.log('level 1 selected');
+    } else if (levelChoice.join() === 'Level_two'){
+      squares = 6;
+      console.log('level 2 selected');
+    } else if (levelChoice.join() === 'Level_three'){
+      squares = 8;
+      console.log('level 3 selected');
+    } else {
+      console.log('select level');
+    }
+  }
+//////starter page//////
+  $levelButton.on('click', (e) => {
+    levelChoice.push($(e.target).attr('id'));
+    console.log(levelChoice);
+    levelSelection();
+    moveToSelect();
+
+  });
 
 
 //lights up each button//////
@@ -78,13 +106,13 @@ $(() => {
     cpuArray = [];
     clearInterval(timerId);
     $scoresDiv.html('');
-    time = 5;
+    time = 60;
     $timer.html(60);
   }
 
   function startGame() {
 
-    $timer.html(5);
+    $timer.html(60);
     startTimer();
     createCpuArray();
     $scoresDiv.html('');
@@ -95,7 +123,7 @@ $(() => {
     if(time === 0) {
       cpuArray = [];
       $buttons.attr('disabled', true);
-      console.log('stopped');
+      alert('your score is ' + $scoresDiv);
     }
   }
   // function endGame() {
@@ -133,11 +161,11 @@ $(() => {
   function checkForWin() {
     console.log('checking for win...');
     if (playerArray.join() === cpuArray.join()) {
-      console.log('player did win!');
+      alert('player did win!');
       score++;
       $scoresDiv.html(score);
     } else {
-      console.log('player did not win');
+      alert('DIDNT WIN BOOO');
     }
     playerArray = [];
     setTimeout(createCpuArray, 2000);

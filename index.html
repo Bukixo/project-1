@@ -8,35 +8,23 @@
     <script src="js/app.js" charset="utf-8"></script>
   </head>
   <body>
-    <h1>SIMON SAYS</h1>
-    <div class="container">
-      <ul>
-        <li class="blue" id="0">blue</li>
-        <li class="red" id="1">red</li>
-        <li class="green" id="2">green</li>
-        <li class="yellow" id="3">yellow</li>
-      </ul>
-
-      <div class="timer">
-        60
+      <div class="starting-page">
+        <button id="Level_one" class="level-button">easy</button>
+        <button id="Level_two" class="level-button">medium</button>
+        <button id="Level_three" class="level-button">Hard</button>
       </div>
-
+      <div class="game-page">
+        <ul>
+          <li class="blue" >blue</li>
+          <li class="red">red</li>
+          <li class="green">green</li>
+          <li class="yellow">yellow</li>
+        </ul>
+        <div class="timer">60</div>
+        <button class="start" name="button">start</button>
+        <button class="reset" type="reset" name="reset">reset</button>
+          <div class="scores"></div>
+          <div class="level"></div>
       </div>
-
-
-      <button class="start" name="button">start</button>
-      <button class="reset" type="reset" name="reset">reset</button>
-
-      <aside class="">
-
-        <div class="scores">
-        </div>
-
-        <div class="level">
-        </div>
-
-      </aside>
-
-    </div>
   </body>
 </html>

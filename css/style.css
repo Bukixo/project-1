@@ -1,20 +1,40 @@
-body {
+.starting-page{
+background-image: url('http://geminidjs.com/wp-content/uploads/2013/07/Club-Disco-Party-PPT-Backgrounds-780x340.jpg');
+width:100%;
+height:100vh;
+background-repeat: no-repeat;
+background-size: cover;
+display: inline-block;
+}
+
+.level-button{
+  height: 90px;
+  width: 180px;
+  border: 3px solid blue;
+}
+
+.level-button:active {
+  transform: translateY(4px);
+}
+.game-page {
   background-image: url('http://www.neildrover.com/wp-content/uploads/2015/03/maxresdefault.jpg');
   background-size: cover;
-
-
+  width:100%;
+  height:100vh;
 }
 
-.container {
 
-  margin: 50px;
-  height: 600px;
-}
-
-button{
+.start{
 height: 90px;
 width: 180px;
 border: 3px solid blue;
+margin-top: 190px
+}
+.reset{
+height: 90px;
+width: 180px;
+border: 3px solid blue;
+margin-top: 190px
 }
 
 
@@ -69,4 +89,8 @@ li {
   width: 100px;
   height: 50px;
   color: white;
+}
+
+li:active {
+  transform: translateY(4px);
 }
