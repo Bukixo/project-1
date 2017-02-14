@@ -1,52 +1,146 @@
 $(() => {
 
+
   // const $blue = $('.blue');
   // const $red = $('.red');
   // const $green = $('.green');
   // const $yellow = $('.yellow');
 
   const $buttons = $('li');
-  const playerArray = [];
-  const cpuArray = ['blue', 'green', 'red', 'yellow'];
+  let playerArray = [];
+  const options = ['blue', 'green', 'red', 'yellow'];
+  let cpuArray = [];
+  const squares = 4;
+  const $start = $('.start');
+  const $scoresDiv = $('.scores');
+  let score = 0;
+  const $timer = $('.timer');
+  let time = 5;
+  const $reset =$('.reset');
+  let timerId = null;
 
-  function random(array) {
-  return array[Math.floor(Math.random()*4)];
-}
 
-console.log(random(cpuArray));
 
-  $buttons.on('click', (e) => {
-    playerArray.push($(e.target).attr('class'));
-    // console.log(playerArray, cpuArray, playerArray === cpuArray);
-    // if playerArray.length === cpuArray.length
-    // check if playerArray and cpuArray are identical
-    // if they are generate a random option (red blue green yellow)
-    // push it into cpuArray
-    // clear the playerArray
-  });
+//lights up each button//////
 
-  var running = (playerArray.length === cpuArray.length);
+  function lights(){
+    console.log(cpuArray);
+    for (let i=0; i<cpuArray.length; i++) {
+      setTimeout(()=> {
+        $(`li.${cpuArray[i]}`).addClass('lit');
 
-  if (running === true) {
-  //     //generate random option to push on to cpuArray
-      return random(cpuArray);
-  //     //clear playerArray
-          playerArray = [];
-  //     //assign score
-              ++1;
-    } else {
-  //     //Generate random option to push on to cpuArray
-      return random(cpuArray);
-       alert('Oh no its wrong!');
+        setTimeout(()=> {
+          $(`li.${cpuArray[i]}`).removeClass('lit');
+        }, 500);
+
+      }, 1000 * i+1);
     }
   }
 
-  ///////////////////Timer//////////////////
+  //   ////////start timer/////////
+  function startTimer() {
+    $timer.addClass('active');
+
+    timerId = setInterval(() => {
+      time--;
+      $timer.html(time);
+
+      if (!time) {
+        clearInterval(timerId);
+        endGame();
+      }
+      // cleat the interval with the timerId
+
+    }, 1000);
+  }
+
+  // function startTimer() {
+  //   timerId = setInterval(() => {
+  //     time--;
+  //     $timer.html(time);
+  //     if (!time) {
+  //       console.log('Finish');
+  //       clearInterval(timerId);
+  //       gameOver();//
+  //     }
+  //   }, 1000);
+  // }
 
 
-//
+  // Game initializer
+  $start.on('click', startGame);
+
+  $reset.on('click', resetGame);
+
+  function resetGame() {
+    console.log('END GAME');
+    playerArray =[];
+    cpuArray = [];
+    clearInterval(timerId);
+    $scoresDiv.html('');
+    time = 5;
+    $timer.html(60);
+  }
+
+  function startGame() {
+
+    $timer.html(5);
+    startTimer();
+    createCpuArray();
+    $scoresDiv.html('');
+
+  }
+
+  function endGame() {
+    if(time === 0) {
+      cpuArray = [];
+      $buttons.attr('disabled', true);
+      console.log('stopped');
+    }
+  }
+  // function endGame() {
+  //   cpuArray = [];
+  //   playerArray = [];
+  //   endTime();
+  //   console.log('you have ' + score + ' points!');
+  // }
+  ////function to generate random number////
+  function createCpuArray() {
+    cpuArray = [];
+    for (let i = 0; i < squares; i++) {
+      const color = options[Math.floor(Math.random()*squares)];
+      cpuArray.push(color);
+      console.log('function to generate random number ' +cpuArray);
+    }
+    lights();
+  }
 
 
 
+///////buttons for player////////
+  $buttons.on('click', (e) => {
+    playerArray.push($(e.target).attr('class'));
+    console.log('player buttons ' +playerArray);
+
+    if(playerArray.length === cpuArray.length) {
+      checkForWin();
+    }
+  });
+
+
+
+///checks for win/////////////
+  function checkForWin() {
+    console.log('checking for win...');
+    if (playerArray.join() === cpuArray.join()) {
+      console.log('player did win!');
+      score++;
+      $scoresDiv.html(score);
+    } else {
+      console.log('player did not win');
+    }
+    playerArray = [];
+    setTimeout(createCpuArray, 2000);
+  }
 
 });
