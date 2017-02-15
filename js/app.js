@@ -12,7 +12,7 @@ $(() => {
   let time = 60;
   const $reset =$('.reset');
   let timerId = null;
-  const levelChoice = [];
+  let levelChoice = null;
   const $levelButton = $('.level-button');
   let squares = 0;
   const $gamePage = $('.game-page');
@@ -26,13 +26,13 @@ $(() => {
 
 ////////LEVEL SELECTION//////
   function levelSelection() {
-    if(levelChoice.join() === 'Level_one') {
+    if(levelChoice === 'Level_one') {
       squares = 4;
       console.log('level 1 selected');
-    } else if (levelChoice.join() === 'Level_two'){
+    } else if (levelChoice === 'Level_two'){
       squares = 6;
       console.log('level 2 selected');
-    } else if (levelChoice.join() === 'Level_three'){
+    } else if (levelChoice === 'Level_three'){
       squares = 8;
       console.log('level 3 selected');
     } else {
@@ -44,7 +44,7 @@ $(() => {
 
 //////starter page//////
   $levelButton.on('click', (e) => {
-    levelChoice.push($(e.target).attr('id'));
+    levelChoice = $(e.target).attr('id');
     console.log(levelChoice);
     levelSelection();
     moveToSelect();

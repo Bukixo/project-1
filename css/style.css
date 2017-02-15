@@ -1,5 +1,5 @@
 .starting-page{
-  background-image: url('http://geminidjs.com/wp-content/uploads/2013/07/Club-Disco-Party-PPT-Backgrounds-780x340.jpg');
+  background: pink;
   width:100%;
   height:100vh;
   background-repeat: no-repeat;
@@ -7,93 +7,252 @@
   display: inline-block;
 }
 
+
+/*button styling for starter page*/
 .level-button{
-  height: 90px;
-  width: 180px;
-  border: 3px solid blue;
+  height: 6em;
+  padding: 15px 50px;
+  margin-left: 400px;
+  margin-top: 4px;
+  cursor: pointer;
+  /*display:inline-block;*/
+  color:#fff;
+  font-size: 1em;
+  border: 1px solid #eee;
+  background: #eee;
+  border-radius: 4px;
+  line-height: 2em;
+  border: 1px solid #aaa;
+  text-decoration: none;
+  -webkit-transition: all 0.3s linear;
+     -khtml-transition: all 0.3s linear;
+       -moz-transition: all 0.3s linear;
+         -o-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+
 }
+
+.level-button:hover{
+box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+}
+
+.level-button:active {
+  text-shadow:1px 1px 1px #eee;
+}
+
+
+
+#Level_one {
+  background: #991DD3;
+}
+
+#Level_two {
+  background: #DD25A3;
+}
+
+#Level_three {
+    background: #E1891D;
+}
+
 
 .level-button:active {
   transform: translateY(4px);
 }
 .game-page {
-  background-image: url('http://www.neildrover.com/wp-content/uploads/2015/03/maxresdefault.jpg');
+  background-image: url('http://big.assets.huffingtonpost.com/murakami.gif ');
+  /*https://media.giphy.com/media/IwA6cWS7HhBM4/giphy.gif*/
   background-size: cover;
   width:100%;
   height:100vh;
 }
 
+img {
+  height: 600px;
+}
+.button-container {
+  width: 700px;
+  height: 200px;
+  /*background: blue;*/
+  display:inline-block;
+  white-space: nowrap;
+  margin:0px;
+  margin-left: 50px;
+}
 
-.start{
-height: 90px;
-width: 180px;
-border: 3px solid blue;
-margin-top: 190px
-}
-.reset{
-height: 90px;
-width: 180px;
-border: 3px solid blue;
-margin-top: 190px
+.start {
+  float: left;
+  width: 12em;
+  border: 3px solid blue;
+  height: 6em;
+  margin-top: 10px;
+  padding: 15px 50px;
+  cursor: pointer;
+  color:#fff;
+  font-size: 1em;
+  border: 1px solid #eee;
+  background: #CF1866;
+  border-radius: 4px;
+  line-height: 2em;
+  border: 1px solid #aaa;
+  text-decoration: none;
+  -webkit-transition: all 0.3s linear;
+     -khtml-transition: all 0.3s linear;
+       -moz-transition: all 0.3s linear;
+      0   -o-transition: all 0.3s linear;
+            transition: all 0.3s linear;
 }
 
-ul{
-  margin: 0;
-  
+.start:hover{
+box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.60) 0px -10px 20px;
 }
+
+.start:active {
+  text-shadow:1px 1px 1px #eee;
+}
+
+.reset {
+  float: right;
+  width: 12em;
+  border: 3px solid blue;
+  height: 6em;
+  margin-top: 10px;
+  margin-left: 50px;
+  padding: 15px 50px;
+  cursor: pointer;
+  display:inline-block;
+  color:#fff;
+  font-size: 1em;
+  border: 1px solid #eee;
+  background: #18CFAB;
+  border-radius: 4px;
+  line-height: 2em;
+  border: 1px solid #aaa;
+  text-decoration: none;
+  -webkit-transition: all 0.3s linear;
+     -khtml-transition: all 0.3s linear;
+       -moz-transition: all 0.3s linear;
+         -o-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+
+}
+
+.reset:hover{
+box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.60) 0px -10px 20px;
+}
+
+.reset:active {
+  text-shadow:1px 1px 1px #eee;
+}
+
 li {
+  /*height: 6em;
+  padding: 15px 50px;*/
+  /*margin: 40px 40px;*/
+  margin-top: 400px;
+  margin-left: 60px;
+  cursor: pointer;
+  display:inline-block;;
+  color:#fff;
+  font-size: 1em;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  line-height: 2em;
+  border: 1px solid #aaa;
+  text-decoration: none;
+  -webkit-transition: all 0.3s linear;
+     -khtml-transition: all 0.3s linear;
+       -moz-transition: all 0.3s linear;
+         -o-transition: all 0.3s linear;
+            transition: all 0.3s linear;
   position: relative;
-  top: 300px;
-  left: 50px;
-  display: inline-block;
-  width: 200px;
-  height: 100px;
-  border: 1px solid black;
+  /*top: 550px;
+  left: 0px;*/
+  width: 180px;
+  height: 80px;
   padding: 20px;
-  opacity: 0.5;
+
+
+
 }
 
+li:hover{
+box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.60) 0px -10px 20px;
+}
+
+li:active {
+  text-shadow:1px 1px 1px #eee;
+  transform: translateY(4px);
+}
 .blue {
   background-color: blue;
+}
+.blue.lit {
+  background-color: pink;
 }
 .red {
   background-color: red;
 }
+.red.lit {
+  background-color: pink;
+}
 .yellow {
   background-color: yellow;
+}
+.yellow.lit {
+  background-color: pink;
 }
 .green {
   background-color: green;
 }
-
-.lit {
-  opacity: 1;
+.green.lit {
+  background-color: pink;
 }
+/*.lit {
+  opacity: 1;
+}*/
 
-
+.container {
+  /*background: green;*/
+  height: 200px;
+  /*margin-top: -190px;*/
+  text-align: center;
+  width: 100%;
+  dispaly: inline-block;
+}
 .timer {
-  height: 70px;
-  width: 70px;
+  height: 80px;
+  width: 160px;
+  left: 50px;
   border: 5px solid dodgerblue;
-  position: relative;
-  border-radius: 50%;
+  bottom: 600px;
+  border-radius: 10%;
   font-size: 36px;
   font-weight: bold;
   text-align: center;
   line-height: 70px;
   color: dodgerblue;
-  margin: 0 auto 30px;
-  top:300px;
+  /*margin: 0 auto 40px;*/
   background-color: white;
+  float: right;
+  /*margin: 20px 40px;*/
+  margin-right: 280px;
+  margin-top: -90px;
 }
 
 .scores {
   border: 5px solid white;
-  width: 100px;
+  width: 160px;
   height: 50px;
   color: white;
-}
-
-li:active {
-  transform: translateY(4px);
+  float: left;
+  margin-left: 250px;
+  margin-top: 20px;
+  border: 5px solid dodgerblue;
+  border-radius: 10%;
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 50px;
+  color: dodgerblue;
+  background: white;
 }
