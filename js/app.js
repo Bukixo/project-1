@@ -3,7 +3,7 @@ $(() => {
 
   const $buttons = $('li');
   let playerArray = [];
-  const options = ['blue', 'green', 'red', 'yellow'];
+  const options = ['blue', 'green', 'red', 'yellow', 'blue', 'green', 'red', 'yellow'];
   let cpuArray = [];
   const $start = $('.start');
   const $scoresDiv = $('.scores');
@@ -39,15 +39,16 @@ $(() => {
       console.log('select level');
     }
   }
+
+
+
 //////starter page//////
   $levelButton.on('click', (e) => {
     levelChoice.push($(e.target).attr('id'));
     console.log(levelChoice);
     levelSelection();
     moveToSelect();
-
   });
-
 
 //lights up each button//////
 
@@ -75,6 +76,7 @@ $(() => {
 
       if (!time) {
         clearInterval(timerId);
+        $buttons.attr('disabled', true);
         endGame();
       }
       // cleat the interval with the timerId
@@ -108,6 +110,7 @@ $(() => {
     $scoresDiv.html('');
     time = 60;
     $timer.html(60);
+    $start.prop('disabled', false);
   }
 
   function startGame() {
@@ -116,12 +119,14 @@ $(() => {
     startTimer();
     createCpuArray();
     $scoresDiv.html('');
+    $start.prop('disabled', true);
 
   }
 
   function endGame() {
     if(time === 0) {
       cpuArray = [];
+      score = 0;
       $buttons.attr('disabled', true);
       alert('your score is ' + $scoresDiv);
     }
@@ -132,7 +137,7 @@ $(() => {
   //   endTime();
   //   console.log('you have ' + score + ' points!');
   // }
-  ////function to generate random number////
+  //function to generate random number////
   function createCpuArray() {
     cpuArray = [];
     for (let i = 0; i < squares; i++) {
