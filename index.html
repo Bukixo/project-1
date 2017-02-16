@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Project 1</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
@@ -9,25 +10,26 @@
     <script src="js/app.js" charset="utf-8"></script>
   </head>
   <body>
+      <audio id="audio"></audio>
       <div class="starting-page">
-
-        <div>
-          <img src="http://i154.photobucket.com/albums/s278/creepkake/fuyuumi_ai_render_by_nafeesa_chan-d5v8o1a_zps0a4ac2a1.png" "/>
-
+        <h1>"船長さんの命令<br> SIMOn SAYS!"</h1>
+        <div class="instructions">
+          <p>Konichwa and Welcome to Simon Says!</p>
+            <p>Select a level on the right which will take you to the game page. When you are ready click on start. The tiles will then light up in a arndom suquence, memorize and try to copy. </p>
+          <p>TIP! Watch the whole computer generated squence before clicking on the tiles.. and HAVE FUN xoxox</p>
+        </div>
           <div class='level'>
             <button id="Level_one" class="level-button">easy</button>
             <button id="Level_two" class="level-button">medium</button>
-            <button id="Level_three" class="level-button">hard</button
+            <button id="Level_three" class="level-button">hard</button>
           </div>
-        </div>
-
-
 
       </div>
+
       <div class="game-page">
 
         <div class='container'>
-
+            <img  class ='dancers' src="https://media.giphy.com/media/gIWcBJ5Fls9nW/giphy.gif" alt="">
           <div class="button-container">
             <button class="reset" type="reset" name="reset">reset</button>
             <button class="start" name="button">start</button>
@@ -45,5 +47,7 @@
         </ul>
 
       </div>
+
+      <div class="modal"></div>
   </body>
 </html>

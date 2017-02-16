@@ -1,21 +1,56 @@
+
+
+h1 {
+  font-family: "WOBBLES";
+  font-size: 70px;
+  left: 15px;
+}
+
+
+.instructions {
+  height: 250px;
+  background: #fef2f7;
+  border-radius: 10%;
+  border: 2px solid #8795d5;
+  width: 300px;
+  position: absolute;
+  left: 30px;
+  padding: 25px;
+  font-family: hello beautiful;
+  font-size: 20px;
+}
 .starting-page{
   background: pink;
   width:100%;
   height:100vh;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 70vh;
+  background-position: bottom center;
   display: inline-block;
+  /*background-image: url('http://i154.photobucket.com/albums/s278/creepkake/fuyuumi_ai_render_by_nafeesa_chan-d5v8o1a_zps0a4ac2a1.png');*/
+  background-image: url('https://s-media-cache-ak0.pinimg.com/originals/73/b1/24/73b12445f0f08b0fdc0cabd19e654c83.png');
+  position: relative;
+  font-family: hello beautiful;
+  font-size: 20px;
 }
 
+.level {
+   position: absolute;
+   /*background: grey;*/
+   top: 40%;
+   transform: translateY(-50%);
+   right: 15%;
+   width: 230px;
+}
 
 /*button styling for starter page*/
-.level-button{
-  height: 6em;
+button{
+  height: 7em;
   padding: 15px 50px;
-  margin-left: 400px;
-  margin-top: 4px;
   cursor: pointer;
-  /*display:inline-block;*/
+  display: block;
+  margin: 10px 0;
+  width: 100%;
   color:#fff;
   font-size: 1em;
   border: 1px solid #eee;
@@ -29,29 +64,31 @@
        -moz-transition: all 0.3s linear;
          -o-transition: all 0.3s linear;
             transition: all 0.3s linear;
+  font-family: hello beautiful;
+  font-size: 20px;
 
 }
 
-.level-button:hover{
+button:hover{
 box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
 }
 
-.level-button:active {
+button:active {
   text-shadow:1px 1px 1px #eee;
 }
 
 
 
 #Level_one {
-  background: #991DD3;
+  background: #8795d5;
 }
 
 #Level_two {
-  background: #DD25A3;
+  background: #b05db0;
 }
 
 #Level_three {
-    background: #E1891D;
+    background: #852c6d;
 }
 
 
@@ -59,16 +96,26 @@ box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
   transform: translateY(4px);
 }
 .game-page {
-  background-image: url('http://big.assets.huffingtonpost.com/murakami.gif ');
+  /*background-image: url('http://big.assets.huffingtonpost.com/murakami.gif ');*/
   /*https://media.giphy.com/media/IwA6cWS7HhBM4/giphy.gif*/
+  background: pink;
   background-size: cover;
   width:100%;
   height:100vh;
 }
 
-img {
-  height: 600px;
+.dancers {
+  height: 400px;
+  position:absolute;
+  top: 905px;
+  /*bottom: 90px;*/
+
+
 }
+
+/*img {
+  height: 600px;
+}*/
 .button-container {
   width: 700px;
   height: 200px;
@@ -90,7 +137,7 @@ img {
   color:#fff;
   font-size: 1em;
   border: 1px solid #eee;
-  background: #CF1866;
+  background: #542d47;
   border-radius: 4px;
   line-height: 2em;
   border: 1px solid #aaa;
@@ -108,6 +155,7 @@ box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.60) 0px -10px 20px;
 
 .start:active {
   text-shadow:1px 1px 1px #eee;
+  background: #fbf8fa;
 }
 
 .reset {
@@ -123,7 +171,7 @@ box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.60) 0px -10px 20px;
   color:#fff;
   font-size: 1em;
   border: 1px solid #eee;
-  background: #18CFAB;
+  background: #542d47;
   border-radius: 4px;
   line-height: 2em;
   border: 1px solid #aaa;
@@ -142,22 +190,23 @@ box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.60) 0px -10px 20px;
 
 .reset:active {
   text-shadow:1px 1px 1px #eee;
+  background: #fbf8fa;
 }
 
 li {
   /*height: 6em;
   padding: 15px 50px;*/
   /*margin: 40px 40px;*/
-  margin-top: 400px;
+  margin-top: 290px;
   margin-left: 60px;
   cursor: pointer;
   display:inline-block;;
   color:#fff;
   font-size: 1em;
-  border: 1px solid #eee;
+  /*border: 1px solid #eee;*/
   border-radius: 4px;
   line-height: 2em;
-  border: 1px solid #aaa;
+  /*border: 1px solid #aaa;*/
   text-decoration: none;
   -webkit-transition: all 0.3s linear;
      -khtml-transition: all 0.3s linear;
@@ -182,30 +231,31 @@ box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.60) 0px -10px 20px;
 li:active {
   text-shadow:1px 1px 1px #eee;
   transform: translateY(4px);
+  background: #fbf8fa;;
 }
 .blue {
-  background-color: blue;
+  background-color: #CD7AF4;
 }
 .blue.lit {
-  background-color: pink;
+  background-color: #fbf8fa;;
 }
 .red {
-  background-color: red;
+  background-color: #98858d;
 }
 .red.lit {
-  background-color: pink;
+  background-color: #fbf8fa;;
 }
 .yellow {
-  background-color: yellow;
+  background-color: #8795D5;
 }
 .yellow.lit {
-  background-color: pink;
+  background-color: #fbf8fa;
 }
 .green {
-  background-color: green;
+  background-color: #432c31;
 }
 .green.lit {
-  background-color: pink;
+  background-color: #fbf8fa;;
 }
 /*.lit {
   opacity: 1;
@@ -223,20 +273,21 @@ li:active {
   height: 80px;
   width: 160px;
   left: 50px;
-  border: 5px solid dodgerblue;
+  border: 5px solid #542d47;
   bottom: 600px;
   border-radius: 10%;
   font-size: 36px;
   font-weight: bold;
   text-align: center;
   line-height: 70px;
-  color: dodgerblue;
+  color: #542d47;
   /*margin: 0 auto 40px;*/
-  background-color: white;
+  background-color: #fbf8fa;
   float: right;
   /*margin: 20px 40px;*/
-  margin-right: 280px;
-  margin-top: -90px;
+  margin-right: 260px;
+  margin-top: -100px;
+  font-family: hello beautiful;
 }
 
 .scores {
@@ -245,14 +296,49 @@ li:active {
   height: 50px;
   color: white;
   float: left;
-  margin-left: 250px;
+  margin-left: 270px;
   margin-top: 20px;
-  border: 5px solid dodgerblue;
+  border: 5px solid #542d47;
   border-radius: 10%;
-  font-size: 26px;
   font-weight: bold;
   text-align: center;
   line-height: 50px;
-  color: dodgerblue;
-  background: white;
+  color: #542d47;
+  background: #fbf8fa;
+  font-family: hello beautiful;
+  font-size: 26px;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fef2f7;
+  font-family: hello beautiful;
+  font-size: 30px;
+  padding: 20px;
+  border-radius: 5%;
+  height: 600px;
+  display: none;
+
+}
+
+.modal-button {
+  background-color:#542d47;
+  width: 200px;
+  font-size: 20px;
+  position: absolute;
+  bottom: 1px;
+}
+
+@media only screen and (max-width:767px) {
+  .level {
+    right: auto;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+
+
 }

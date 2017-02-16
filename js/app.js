@@ -15,13 +15,25 @@ $(() => {
   let levelChoice = null;
   const $levelButton = $('.level-button');
   let squares = 0;
+  const $modal = $('.modal');
   const $gamePage = $('.game-page');
+  const $startingPage = $('.starting-page');
+  // const $audio = $('#audio');
 
 //////moving from starter page to game page /////
   function moveToSelect(){
     $('html, body').animate({
       scrollTop: $gamePage.offset().top
-    }, 1);
+    }, 1000);
+  }
+
+//////moving from game page to starter page /////
+
+  function moveToLevels(){
+    $('html, body').animate({
+      scrollTop: $startingPage.offset().top
+    }, 1000);
+    $modal.hide();
   }
 
 ////////LEVEL SELECTION//////
@@ -102,6 +114,8 @@ $(() => {
 
   $reset.on('click', resetGame);
 
+  $modal.on('click', 'button', moveToLevels);
+
   function resetGame() {
     console.log('END GAME');
     playerArray =[];
@@ -117,18 +131,31 @@ $(() => {
 
     $timer.html(60);
     startTimer();
-    createCpuArray();
+    setTimeout(createCpuArray, 2000);
+    // createCpuArray();
     $scoresDiv.html('');
     $start.prop('disabled', true);
+    // playMusic();
 
   }
 
   function endGame() {
     if(time === 0) {
       cpuArray = [];
-      score = 0;
+      let image;
       $buttons.attr('disabled', true);
-      alert('your score is ' + $scoresDiv);
+      if (score < 1) {
+        image = 'https://media.giphy.com/media/IRqY3RE6zg6He/giphy.gif';
+      } else {
+        image = 'http://24.media.tumblr.com/tumblr_m7y2bqNnLc1rzy67oo1_500.gif ';
+      }
+      $modal.html(`
+        <p>Your score is ${score}</p>
+        <img src="${image}">
+        <button class="modal-button">Play again?</button>
+      `);
+      $modal.show();
+      score = 0;
     }
   }
   // function endGame() {
@@ -177,3 +204,10 @@ $(() => {
   }
 
 });
+
+////////////audio////////////////////
+// function playMusic () {
+//   $audio.src ='sounds/Super-Outro.mp3';
+//   audio.play();
+//
+// }
