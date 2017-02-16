@@ -18,7 +18,7 @@ $(() => {
   const $modal = $('.modal');
   const $gamePage = $('.game-page');
   const $startingPage = $('.starting-page');
-  // const $audio = $('#audio');
+  const $audio = $('#audio');
 
 //////moving from starter page to game page /////
   function moveToSelect(){
@@ -135,7 +135,7 @@ $(() => {
     // createCpuArray();
     $scoresDiv.html('');
     $start.prop('disabled', true);
-    // playMusic();
+    playMusic();
 
   }
 
@@ -189,7 +189,7 @@ $(() => {
 
 
 
-///checks for win/////////////
+  ///checks for win/////////////
   function checkForWin() {
     console.log('checking for win...');
     if (playerArray.join() === cpuArray.join()) {
@@ -203,11 +203,10 @@ $(() => {
     setTimeout(createCpuArray, 2000);
   }
 
-});
+  ////////////audio////////////////////
+  function playMusic() {
+    $audio.get(0).src ='sounds/Super-Outro.mp3';
+    $audio.get(0).play();
+  }
 
-////////////audio////////////////////
-// function playMusic () {
-//   $audio.src ='sounds/Super-Outro.mp3';
-//   audio.play();
-//
-// }
+});
