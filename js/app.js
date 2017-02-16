@@ -1,6 +1,5 @@
 $(() => {
 
-
   const $buttons = $('li');
   let playerArray = [];
   const options = ['blue', 'green', 'red', 'yellow', 'blue', 'green', 'red', 'yellow'];
@@ -20,13 +19,27 @@ $(() => {
   const $startingPage = $('.starting-page');
   const $audio = $('#audio');
 
-//////moving from starter page to game page /////
-  function moveToSelect(){
-    $('html, body').animate({
-      scrollTop: $gamePage.offset().top
-    }, 1000);
+  // Game initializer
+  $start.on('click', startGame);
+  $reset.on('click', resetGame);
+  $modal.on('click', 'button', moveToLevels);
+  $buttons.on('click', playerButton);
+  $levelButton.on('click', starterPage);
+
+
+/////////functions///////////////
+  function playerButton(e) {
+    playerArray.push($(e.target).attr('class'));
+    if(playerArray.length === cpuArray.length) {
+      checkForWin();
+    }
   }
 
+  function starterPage(e) {
+    levelChoice = $(e.target).attr('id');
+    levelSelection();
+    moveToSelect();
+  }
 //////moving from game page to starter page /////
 
   function moveToLevels(){
@@ -36,44 +49,22 @@ $(() => {
     $modal.hide();
   }
 
-////////LEVEL SELECTION//////
-  function levelSelection() {
-    if(levelChoice === 'Level_one') {
-      squares = 4;
-      console.log('level 1 selected');
-    } else if (levelChoice === 'Level_two'){
-      squares = 6;
-      console.log('level 2 selected');
-    } else if (levelChoice === 'Level_three'){
-      squares = 8;
-      console.log('level 3 selected');
-    } else {
-      console.log('select level');
-    }
+//////moving from starter page to game page /////
+  function moveToSelect(){
+    $('html, body').animate({
+      scrollTop: $gamePage.offset().top
+    }, 1000);
   }
 
-
-
-//////starter page//////
-  $levelButton.on('click', (e) => {
-    levelChoice = $(e.target).attr('id');
-    console.log(levelChoice);
-    levelSelection();
-    moveToSelect();
-  });
-
-//lights up each button//////
+  //lights up each button//////
 
   function lights(){
-    console.log(cpuArray);
     for (let i=0; i<cpuArray.length; i++) {
       setTimeout(()=> {
         $(`li.${cpuArray[i]}`).addClass('lit');
-
         setTimeout(()=> {
           $(`li.${cpuArray[i]}`).removeClass('lit');
         }, 500);
-
       }, 1000 * i+1);
     }
   }
@@ -81,43 +72,32 @@ $(() => {
   //   ////////start timer/////////
   function startTimer() {
     $timer.addClass('active');
-
     timerId = setInterval(() => {
       time--;
       $timer.html(time);
-
       if (!time) {
         clearInterval(timerId);
         $buttons.attr('disabled', true);
         endGame();
       }
-      // cleat the interval with the timerId
-
     }, 1000);
   }
 
-  // function startTimer() {
-  //   timerId = setInterval(() => {
-  //     time--;
-  //     $timer.html(time);
-  //     if (!time) {
-  //       console.log('Finish');
-  //       clearInterval(timerId);
-  //       gameOver();//
-  //     }
-  //   }, 1000);
-  // }
 
-
-  // Game initializer
-  $start.on('click', startGame);
-
-  $reset.on('click', resetGame);
-
-  $modal.on('click', 'button', moveToLevels);
+////////LEVEL SELECTION//////
+  function levelSelection() {
+    if(levelChoice === 'Level_one') {
+      squares = 4;
+    } else if (levelChoice === 'Level_two'){
+      squares = 6;
+    } else if (levelChoice === 'Level_three'){
+      squares = 8;
+    } else {
+      console.log('select level');
+    }
+  }
 
   function resetGame() {
-    console.log('END GAME');
     playerArray =[];
     cpuArray = [];
     clearInterval(timerId);
@@ -128,7 +108,6 @@ $(() => {
   }
 
   function startGame() {
-
     $timer.html(60);
     startTimer();
     setTimeout(createCpuArray, 2000);
@@ -137,6 +116,15 @@ $(() => {
     $start.prop('disabled', true);
     playMusic();
 
+  }
+
+  function createCpuArray() {
+    cpuArray = [];
+    for (let i = 0; i < squares; i++) {
+      const color = options[Math.floor(Math.random()*squares)];
+      cpuArray.push(color);
+    }
+    lights();
   }
 
   function endGame() {
@@ -158,46 +146,13 @@ $(() => {
       score = 0;
     }
   }
-  // function endGame() {
-  //   cpuArray = [];
-  //   playerArray = [];
-  //   endTime();
-  //   console.log('you have ' + score + ' points!');
-  // }
-  //function to generate random number////
-  function createCpuArray() {
-    cpuArray = [];
-    for (let i = 0; i < squares; i++) {
-      const color = options[Math.floor(Math.random()*squares)];
-      cpuArray.push(color);
-      console.log('function to generate random number ' +cpuArray);
-    }
-    lights();
-  }
-
-
-
-///////buttons for player////////
-  $buttons.on('click', (e) => {
-    playerArray.push($(e.target).attr('class'));
-    console.log('player buttons ' +playerArray);
-
-    if(playerArray.length === cpuArray.length) {
-      checkForWin();
-    }
-  });
-
-
 
   ///checks for win/////////////
   function checkForWin() {
-    console.log('checking for win...');
     if (playerArray.join() === cpuArray.join()) {
       alert('player did win!');
       score++;
       $scoresDiv.html(score);
-    } else {
-      alert('DIDNT WIN BOOO');
     }
     playerArray = [];
     setTimeout(createCpuArray, 2000);
@@ -208,5 +163,4 @@ $(() => {
     $audio.get(0).src ='sounds/Super-Outro.mp3';
     $audio.get(0).play();
   }
-
 });
