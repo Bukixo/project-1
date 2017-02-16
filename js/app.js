@@ -1,166 +1,168 @@
-$(() => {
+var simonSays = simonSays || {};
 
-  const $buttons = $('li');
-  let playerArray = [];
-  const options = ['blue', 'green', 'red', 'yellow', 'blue', 'green', 'red', 'yellow'];
-  let cpuArray = [];
-  const $start = $('.start');
-  const $scoresDiv = $('.scores');
-  let score = 0;
-  const $timer = $('.timer');
-  let time = 60;
-  const $reset =$('.reset');
-  let timerId = null;
-  let levelChoice = null;
-  const $levelButton = $('.level-button');
-  let squares = 0;
-  const $modal = $('.modal');
-  const $gamePage = $('.game-page');
-  const $startingPage = $('.starting-page');
-  const $audio = $('#audio');
-
-  // Game initializer
-  $start.on('click', startGame);
-  $reset.on('click', resetGame);
-  $modal.on('click', 'button', moveToLevels);
-  $buttons.on('click', playerButton);
-  $levelButton.on('click', starterPage);
-
-
+simonSays.playerArray = [];
+simonSays.cpuArray = [];
+simonSays.score = 0;
+simonSays.time = 60;
+simonSays.timerId = null;
+simonSays.levelChoice = null;
+simonSays.squares = 0;
 /////////functions///////////////
-  function playerButton(e) {
-    playerArray.push($(e.target).attr('class'));
-    if(playerArray.length === cpuArray.length) {
-      checkForWin();
-    }
+simonSays.playerButton = function playerButton(e) {
+  this.playerArray.push($(e.target).attr('class'));
+  if(this.playerArray.length === this.cpuArray.length) {
+    simonSays.checkForWin();
   }
+};
 
-  function starterPage(e) {
-    levelChoice = $(e.target).attr('id');
-    levelSelection();
-    moveToSelect();
-  }
+simonSays.starterPage = function starterPage(e) {
+  this.levelChoice = $(e.target).attr('id');
+  simonSays.levelSelection();
+  simonSays.moveToSelect();
+};
 //////moving from game page to starter page /////
 
-  function moveToLevels(){
-    $('html, body').animate({
-      scrollTop: $startingPage.offset().top
-    }, 1000);
-    $modal.hide();
-  }
+simonSays.moveToLevels = function moveToLevels(){
+  $('html, body').animate({
+    scrollTop: this.$startingPage.offset().top
+  }, 1000);
+  this.$modal.hide();
+};
 
 //////moving from starter page to game page /////
-  function moveToSelect(){
-    $('html, body').animate({
-      scrollTop: $gamePage.offset().top
-    }, 1000);
-  }
+simonSays.moveToSelect = function moveToSelect(){
+  $('html, body').animate({
+    scrollTop: this.$gamePage.offset().top
+  }, 1000);
+};
 
-  //lights up each button//////
+//lights up each button//////
 
-  function lights(){
-    for (let i=0; i<cpuArray.length; i++) {
+simonSays.lights = function lights(){
+  for (let i=0; i<this.cpuArray.length; i++) {
+    setTimeout(()=> {
+      $(`li.${this.cpuArray[i]}`).addClass('lit');
       setTimeout(()=> {
-        $(`li.${cpuArray[i]}`).addClass('lit');
-        setTimeout(()=> {
-          $(`li.${cpuArray[i]}`).removeClass('lit');
-        }, 500);
-      }, 1000 * i+1);
-    }
+        $(`li.${this.cpuArray[i]}`).removeClass('lit');
+      }, 500);
+    }, 1000 * i+1);
   }
+};
 
-  //   ////////start timer/////////
-  function startTimer() {
-    $timer.addClass('active');
-    timerId = setInterval(() => {
-      time--;
-      $timer.html(time);
-      if (!time) {
-        clearInterval(timerId);
-        $buttons.attr('disabled', true);
-        endGame();
-      }
-    }, 1000);
-  }
+//   ////////start timer/////////
+simonSays.startTimer = function startTimer() {
+  this.$timer.addClass('active');
+  this.timerId = setInterval(() => {
+    this.time--;
+    this.$timer.html(this.time);
+    if (!this.time) {
+      clearInterval(this.timerId);
+      this.$buttons.attr('disabled', true);
+      this.endGame();
+    }
+  }, 1000);
+};
 
 
 ////////LEVEL SELECTION//////
-  function levelSelection() {
-    if(levelChoice === 'Level_one') {
-      squares = 4;
-    } else if (levelChoice === 'Level_two'){
-      squares = 6;
-    } else if (levelChoice === 'Level_three'){
-      squares = 8;
+simonSays.levelSelection = function levelSelection() {
+  if(this.levelChoice === 'Level_one') {
+    this.squares = 4;
+  } else if (this.levelChoice === 'Level_two'){
+    this.squares = 6;
+  } else if (this.levelChoice === 'Level_three'){
+    this.squares = 8;
+  } else {
+    console.log('select level');
+  }
+};
+
+simonSays.resetGame = function resetGame() {
+  this.playerArray =[];
+  this.cpuArray = [];
+  clearInterval(this.timerId);
+  this.$scoresDiv.html('');
+  this.time = 60;
+  this.$timer.html(60);
+  this.$start.prop('disabled', false);
+};
+
+simonSays.startGame = function startGame() {
+  this.$timer.html(60);
+  simonSays.startTimer();
+  setTimeout(this.createCpuArray.bind(this), 2000);
+  // createCpuArray();
+  this.$scoresDiv.html('');
+  this.$start.prop('disabled', true);
+  simonSays.playMusic();
+
+};
+
+simonSays.createCpuArray = function createCpuArray() {
+  this.cpuArray = [];
+  for (let i = 0; i < this.squares; i++) {
+    const color = this.options[Math.floor(Math.random()*this.squares)];
+    this.cpuArray.push(color);
+  }
+  this.lights();
+};
+
+simonSays.endGame = function endGame() {
+  if(this.time === 0) {
+    this.cpuArray = [];
+    let image;
+    this.$buttons.attr('disabled', true);
+    if (this.score < 1) {
+      image = 'https://media.giphy.com/media/IRqY3RE6zg6He/giphy.gif';
     } else {
-      console.log('select level');
+      image = 'http://24.media.tumblr.com/tumblr_m7y2bqNnLc1rzy67oo1_500.gif ';
     }
+    this.$modal.html(`
+      <p>Your score is ${this.score}</p>
+      <img src="${image}">
+      <button class="modal-button">Play again?</button>
+    `);
+    this.$modal.show();
+    this.score = 0;
   }
+};
 
-  function resetGame() {
-    playerArray =[];
-    cpuArray = [];
-    clearInterval(timerId);
-    $scoresDiv.html('');
-    time = 60;
-    $timer.html(60);
-    $start.prop('disabled', false);
+///checks for win/////////////
+simonSays.checkForWin = function checkForWin() {
+  if (this.playerArray.join() === this.cpuArray.join()) {
+    alert('player did win!');
+    this.score++;
+    this.$scoresDiv.html(this.score);
   }
+  this.playerArray = [];
+  setTimeout(simonSays.createCpuArray.bind(this), 2000);
+};
 
-  function startGame() {
-    $timer.html(60);
-    startTimer();
-    setTimeout(createCpuArray, 2000);
-    // createCpuArray();
-    $scoresDiv.html('');
-    $start.prop('disabled', true);
-    playMusic();
+////////////audio////////////////////
+simonSays.playMusic = function playMusic() {
+  this.$audio.get(0).src ='sounds/Super-Outro.mp3';
+  this.$audio.get(0).play();
+};
 
-  }
+simonSays.setup = function setup() {
+  this.$buttons = $('li');
+  this.options = ['blue', 'green', 'red', 'yellow', 'blue', 'green', 'red', 'yellow'];
+  this.$start = $('.start');
+  this.$scoresDiv = $('.scores');
+  this.$timer = $('.timer');
+  this.$reset =$('.reset');
+  this.$levelButton = $('.level-button');
+  this.$modal = $('.modal');
+  this.$gamePage = $('.game-page');
+  this.$startingPage = $('.starting-page');
+  this.$audio = $('#audio');
 
-  function createCpuArray() {
-    cpuArray = [];
-    for (let i = 0; i < squares; i++) {
-      const color = options[Math.floor(Math.random()*squares)];
-      cpuArray.push(color);
-    }
-    lights();
-  }
+  // Game initializer
+  this.$start.on('click', simonSays.startGame.bind(this));
+  this.$reset.on('click', simonSays.resetGame.bind(this));
+  this.$modal.on('click', 'button', simonSays.moveToLevels.bind(this));
+  this.$buttons.on('click', simonSays.playerButton.bind(this));
+  this.$levelButton.on('click', simonSays.starterPage.bind(this));
+};
 
-  function endGame() {
-    if(time === 0) {
-      cpuArray = [];
-      let image;
-      $buttons.attr('disabled', true);
-      if (score < 1) {
-        image = 'https://media.giphy.com/media/IRqY3RE6zg6He/giphy.gif';
-      } else {
-        image = 'http://24.media.tumblr.com/tumblr_m7y2bqNnLc1rzy67oo1_500.gif ';
-      }
-      $modal.html(`
-        <p>Your score is ${score}</p>
-        <img src="${image}">
-        <button class="modal-button">Play again?</button>
-      `);
-      $modal.show();
-      score = 0;
-    }
-  }
-
-  ///checks for win/////////////
-  function checkForWin() {
-    if (playerArray.join() === cpuArray.join()) {
-      alert('player did win!');
-      score++;
-      $scoresDiv.html(score);
-    }
-    playerArray = [];
-    setTimeout(createCpuArray, 2000);
-  }
-
-  ////////////audio////////////////////
-  function playMusic() {
-    $audio.get(0).src ='sounds/Super-Outro.mp3';
-    $audio.get(0).play();
-  }
-});
+$(simonSays.setup.bind(simonSays));

@@ -27,7 +27,7 @@ h1 {
   background-size: 70vh;
   background-position: bottom center;
   display: inline-block;
-  /*background-image: url('http://i154.photobucket.com/albums/s278/creepkake/fuyuumi_ai_render_by_nafeesa_chan-d5v8o1a_zps0a4ac2a1.png');*/
+
   background-image: url('https://s-media-cache-ak0.pinimg.com/originals/73/b1/24/73b12445f0f08b0fdc0cabd19e654c83.png');
   position: relative;
   font-family: hello beautiful;
@@ -220,8 +220,6 @@ li {
   height: 80px;
   padding: 20px;
 
-
-
 }
 
 li:hover{
@@ -335,10 +333,21 @@ li:active {
 @media only screen and (max-width:767px) {
   .level {
     right: auto;
-    left: 50%;
+    left: 80%;
     transform: translate(-50%, -50%);
+    bottom: 500px;
   }
 
+  .starting-page{
+    height: 100vh;
+    background-size: 40vh;
+    background-position: bottom left
+  }
 
-
+  .instructions {
+      height: 150px;
+      width: 400px;
+      right: 290px;
+      font-size: 16px;
+  }
 }
