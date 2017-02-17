@@ -130,7 +130,6 @@ simonSays.endGame = function endGame() {
 ///checks for win/////////////
 simonSays.checkForWin = function checkForWin() {
   if (this.playerArray.join() === this.cpuArray.join()) {
-    alert('player did win!');
     this.score++;
     this.$scoresDiv.html(this.score);
   }
