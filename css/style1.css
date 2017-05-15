@@ -1,28 +1,21 @@
-.back {
-  background: pink;
-}
 
 
-.title {
+h1 {
   font-family: "WOBBLES";
-  font-size: 90px;
-  /*left: 15px;*/
-  /*text-align: center;
-  margin: 50px;*/
+  font-size: 70px;
+  left: 15px;
 }
-
 
 
 .instructions {
-  /*height: 250px;*/
+  height: 250px;
   background: #fef2f7;
   border-radius: 10%;
   border: 2px solid #8795d5;
-  padding: 30px;
-  /*width: 300px;*/
-  /*position: absolute;*/
-  /*left: 30px;
-  padding: 25px;*/
+  width: 300px;
+  position: absolute;
+  left: 30px;
+  padding: 25px;
   font-family: hello beautiful;
   font-size: 20px;
 }
@@ -34,23 +27,32 @@
   background-size: 70vh;
   background-position: bottom center;
   display: inline-block;
+
   background-image: url('https://s-media-cache-ak0.pinimg.com/originals/73/b1/24/73b12445f0f08b0fdc0cabd19e654c83.png');
   position: relative;
   font-family: hello beautiful;
+  font-size: 20px;
 }
 
-
+.level {
+   position: absolute;
+   /*background: grey;*/
+   top: 40%;
+   transform: translateY(-50%);
+   right: 15%;
+   width: 230px;
+}
 
 /*button styling for starter page*/
 button{
-  height: 130px;
+  height: 7em;
   padding: 15px 50px;
   cursor: pointer;
   display: block;
   margin: 10px 0;
   width: 100%;
   color:#fff;
-  font-size: 20px;
+  font-size: 1em;
   border: 1px solid #eee;
   background: #eee;
   border-radius: 4px;
@@ -103,17 +105,26 @@ button:active {
 }
 
 .dancers {
-  height: 350px;
-  margin-top: -70px;
-  /*position:absolute;*/
-  /*top: 50px;*/
+  height: 400px;
+  position:absolute;
+  top: 905px;
   /*bottom: 90px;*/
+
 
 }
 
 /*img {
   height: 600px;
 }*/
+.button-container {
+  width: 700px;
+  height: 200px;
+  /*background: blue;*/
+  display:inline-block;
+  white-space: nowrap;
+  margin:0px;
+  margin-left: 50px;
+}
 
 .start {
   float: left;
@@ -183,10 +194,11 @@ box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.60) 0px -10px 20px;
 }
 
 li {
-
-  /*margin-top: 290px;
-  margin-left: 60px;*/
-  bottom: -300px;
+  /*height: 6em;
+  padding: 15px 50px;*/
+  /*margin: 40px 40px;*/
+  margin-top: 290px;
+  margin-left: 60px;
   cursor: pointer;
   display:inline-block;;
   color:#fff;
@@ -253,27 +265,26 @@ li:active {
   /*margin-top: -190px;*/
   text-align: center;
   width: 100%;
-  /*display: inline-block;*/
+  dispaly: inline-block;
 }
 .timer {
-  /*height: 80px;
-  width: 160px;*/
-  /*left: 50px;*/
+  height: 80px;
+  width: 160px;
+  left: 50px;
   border: 5px solid #542d47;
-  /*bottom: 600px;*/
+  bottom: 600px;
   border-radius: 10%;
   font-size: 36px;
   font-weight: bold;
   text-align: center;
-  /*line-height: 70px;*/
+  line-height: 70px;
   color: #542d47;
-  padding: 40px 50px;
   /*margin: 0 auto 40px;*/
   background-color: #fbf8fa;
-  /*float: right;*/
+  float: right;
   /*margin: 20px 40px;*/
-  /*margin-right: 260px;
-  margin-top: -100px;*/
+  margin-right: 260px;
+  margin-top: -100px;
   font-family: hello beautiful;
 }
 
@@ -282,14 +293,14 @@ li:active {
   width: 160px;
   height: 50px;
   color: white;
-  /*float: left;*/
-  /*margin-left: 270px;*/
+  float: left;
+  margin-left: 270px;
   margin-top: 20px;
   border: 5px solid #542d47;
   border-radius: 10%;
   font-weight: bold;
   text-align: center;
-  /*line-height: 50px;*/
+  line-height: 50px;
   color: #542d47;
   background: #fbf8fa;
   font-family: hello beautiful;
@@ -319,79 +330,29 @@ li:active {
   bottom: 1px;
 }
 
-@media screen and (max-width:480px) {
-  .title {
-    font-size: 20px;
-    margin-top: 10px;
+@media only screen and (max-width:767px) {
+  .level {
+    right: auto;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    bottom: 500px;
   }
+
+  .starting-page{
+    height: 100vh;
+    background-size: 40vh;
+    background-position: bottom left
+  }
+
   .instructions {
-    height: 120px;
-    width: 90px;
-    padding: 10px;
-    font-size: 10px;
-    overflow-y: scroll;
-  }
-  button{
-    height: 60px;
-    padding: 13px 30px;
-    width: 50%;
-    font-family: hello beautiful;
-    font-size: 40px;
-    }
-    .starting-page{
-      background: pink;
-      /*width:100%;
-      height:100vh;*/
-      background-repeat: no-repeat;
-      background-size: 20vh;
-      background-position: top-right;
-      /*display: inline-block;*/
-      background-image: url('https://s-media-cache-ak0.pinimg.com/originals/73/b1/24/73b12445f0f08b0fdc0cabd19e654c83.png');
-      /*position: relative;*/
-
-    }
-    .timer {
-      height: 20px;
-      width: 30px;
-
-      /*left: 50px;*/
-
-      /*bottom: 600px;*/
-
+      height: 150px;
+      width: 400px;
+      right: 290px;
       font-size: 16px;
-
-      /*text-align: center;*/
-      /*line-height: 70px;*/
-
-      /*padding: 40px 50px;*/
-      /*margin: 0 auto 40px;*/
-
-      /*float: right;*/
-      /*margin: 20px 40px;*/
-      /*margin-right: 260px;
-      margin-top: -100px;*/
-
-    }
-  .dancers {
-    height: 160px;
-  }
-  .reset {
-    /*float: right;*/
-    width: 90px;
-    border: 3px solid blue;
-    height: 50px;
-
-
-    font-size: 10px;
-
-
-    line-height: 10px;
-
-
   }
   .start {
     /*float: left;*/
-    width: 90px;
+    width: 12em;
     border: 3px solid blue;
     height: 6em;
     margin-top: 10px;
@@ -411,5 +372,4 @@ li:active {
         0   -o-transition: all 0.3s linear;
               transition: all 0.3s linear;
   }
-
 }

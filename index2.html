@@ -17,24 +17,20 @@
           <audio id="audio"></audio>
           <div class="starting-page">
             <h1 class="title">"サイモンは言う<br> SIMOn SAYS!"</h1>
-            <div class="row">
-              <div class="col-md-3 col-xs-6">
-                <div class="instructions">
-                  <p>Konichwa and Welcome to Simon Says!</p>
-                    <p>Select a level on the right which will take you to the game page. When you are ready click on start. The tiles will then light up in a arndom sequence, memorize and try to copy. </p>
-                  <p>TIP! Watch the whole computer generated sequence before clicking on the tiles.. and HAVE FUN xoxox</p>
-                </div>
-              </div>
-
-              <div class="col-md-3 offset-md-5 col-xs-6">
-                <div class='level'>
-                  <button id="Level_one" class="level-button">easy</button>
-                  <button id="Level_two" class="level-button">medium</button>
-                  <button id="Level_three" class="level-button">hard</button>
-                </div>
+            <div class="col-md-3 col-xs-12">
+              <div class="instructions">
+                <p>Konichwa and Welcome to Simon Says!</p>
+                  <p>Select a level on the right which will take you to the game page. When you are ready click on start. The tiles will then light up in a arndom sequence, memorize and try to copy. </p>
+                <p>TIP! Watch the whole computer generated sequence before clicking on the tiles.. and HAVE FUN xoxox</p>
               </div>
             </div>
-
+            <div class="col-md-3 offset-md-8 col-xs-3">
+              <div class='level'>
+                <button id="Level_one" class="level-button">easy</button>
+                <button id="Level_two" class="level-button">medium</button>
+                <button id="Level_three" class="level-button">hard</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -44,22 +40,22 @@
           <div class='container'>
             <div class="games">
               <div class="row justify-content-center">
-                <div class="col-md-3 col-xs-3">
+                <div class="col-md-3">
                     <button class="reset" type="reset" name="reset">reset</button>
                 </div>
 
-                <div class="col-md-3 col-xs-3">
+                <div class="col-md-3">
                   <div class="row">
-                    <div class="col-md-12 col-xs-12">
+                    <div class="col-md-12">
                       <div class="timer">60</div>
                     </div>
-                    <div class="col-md-10 offset-2 col-xs-10">
+                    <div class="col-md-10 offset-2">
                       <div class="scores">SCORE</div>
                     </div>
                   </div>
                 </div>
 
-                <div class="col-md-3 col-xs-3">
+                <div class="col-md-3">
                   <button class="start" name="button">start</button>
                 </div>
 
@@ -73,15 +69,29 @@
           </div>
         </div>
         <div class="row justify-content-center">
-          <div class="col-md-12">
-          <ul>
+          <div class="col-md-3">
+            <span class="green"></span>
+          </div>
+          <div class="col-md-3">
+            <span class="blue box">
+            </span>
+          </div>
+          <div class="col-md-3">
+            <span class="red box">
+            </span>
+          </div>
+          <div class="col-md-3">
+            <span class="yellow box">
+            </span>
+          </div>
+        </div>
+          <!-- <ul>
             <li class="blue" ></li>
             <li class="red"></li>
             <li class="green"></li>
             <li class="yellow"></li>
-            </ul>
-          </div>
-        </div>
+          </ul> -->
+
         </div>
 
         <div class="modal"></div>
